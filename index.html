@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.js"></script>
+<!-- [Dependencies[ -->
+<script src="jquery.replaceSpriteForPrinting.js"></script>
+<style type="text/css">
+  .sprite {
+    background: url('sprite.png') no-repeat;
+  }
+
+  .sprite-delicious-png {
+      width: 64px;
+      height: 64px;
+      background-position: -75px -75px;
+  }
+
+  .sprite-digg-png {
+      width: 64px;
+      height: 64px;
+      background-position: -0px -75px;
+  }
+
+  .sprite-everynote-png {
+      width: 64px;
+      height: 64px;
+      background-position: -75px -0px;
+  }
+
+  .sprite-twitter-png {
+      width: 64px;
+      height: 64px;
+      background-position: -0px -0px;
+  }
+  .demo_content{
+    height: 200px;
+  }
+  body{
+
+  }
+  .container{
+    width: 760px;
+    margin-right: auto;
+    margin-left:  auto;
+  }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="span12" style="margin-left:auto;margin-right:auto;">
+      <h1>Print Sprite Images</h1>
+      <div>
+        <h4>This is the full sprite image:</h4>
+        <table>
+          <tr>
+            <td>
+              <div>
+                <img src="./sprite.png"/>
+              </div>
+            </td>
+            <td>
+              Included as:
+              <div>
+                <code>
+                  &lt;img src=&quot;./sprite.png&quot;/&gt;
+                </code>
+              </div>
+              <div>
+                <small>
+                  Note: This image will be printed in both cases becauses it's included as an image not a background
+                </small>
+              </div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="demo_content row">
+        <h4> Demo Content:<h4/>
+          <table>
+            <tr>
+              <td>
+                <div>
+                  Text with a sprite:
+                  <div id="element1" class="sprite sprite-delicious-png"></div>
+                </div>
+                <div>
+                  More text with a sprite:
+                  <div id="element2" class="sprite sprite-digg-png"></div>
+                </div>
+              </td>
+              <td style="padding-left: 20px;">
+                <div>
+                  Images included with CSS like this:
+                </div>
+                <code>
+                  background: url('sprite.png') no-repeat;<br/>
+                  width: 64px;<br/>
+                  height: 64px;<br/>
+                  background-position: -0px -75px;<br/>
+                  ...
+                </code>
+              </td>
+            </tr>
+          </table>
+        <hr/>
+        <table>
+          <tr>
+            <td>
+              <input type="button" class="printNoSprites" value="Print without sprite images" />
+            </td>
+            <td style="padding-left: 20px;">
+              <input type="button" class="printSprites" value="Print with sprite images" />
+            </td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
+  <script type="text/javascript">
+    $(function() {
+      $('.printNoSprites').bind('click', function(e){
+        $('.replaceSpriteForPrinting').remove();
+        window.print();
+      });
+      $('.printSprites').bind('click', function(e) {
+        $('.sprite').replaceSpriteForPrinting();
+        window.print();
+      });
+    });
+  </script>
+</body>
+</html>
